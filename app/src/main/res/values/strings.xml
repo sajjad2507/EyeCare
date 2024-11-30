@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MainActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="blue_light">Blue Light</string>
+    <string name="filter">Filter</string>
+    <string name="provide_digital_solution_for_health">Provide digital solution for health</string>
+</resources>
