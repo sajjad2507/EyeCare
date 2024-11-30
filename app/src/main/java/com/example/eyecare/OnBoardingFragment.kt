@@ -1,12 +1,9 @@
 package com.example.eyecare
 
-import android.content.res.ColorStateList
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.eyecare.Utils.setSingleClickListener
