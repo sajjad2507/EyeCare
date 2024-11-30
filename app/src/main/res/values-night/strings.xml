@@ -3,4 +3,16 @@
     <string name="blue_light">Blue Light</string>
     <string name="filter">Filter</string>
     <string name="provide_digital_solution_for_health">Provide digital solution for health</string>
+    <string name="blue_light_sleep"><![CDATA[Blue Light & Sleep]]></string>
+    <string name="studies_shows_that_screen_blue_light_before_bed_can_disrupt_sleep_making_it_harder_to_fall_asleep">Studies shows that screen blue light before bed can disrupt sleep,making it harder to fall asleep.</string>
+    <string name="melatonin_impact">Melatonin Impact</string>
+    <string name="blue_light_lowers_melatonin_levels_which_affects_your_natural_sleep_wake_cycle_and_sleep_quality">Blue light lowers melatonin levels, which affects your natural sleep-wake cycle and sleep quality.</string>
+    <string name="set_filters_for_safety">Set Filters For Safety</string>
+    <string name="use_filters_to_gradually_reduce_blue_light_exposure_helping_protect_your_eyes_and_support_better_sleep">Use filters to gradually reduce blue light exposure, helping protect your eyes and support better sleep.</string>
+    <string name="restore_healthy_sleep">Restore Healthy Sleep</string>
+    <string name="our_app_promotes_eye_protection_and_better_sleep_helping_you_to_maintain_a_natural_sleep_cycle">Our app promotes eye protection and better sleep, helping you to maintain a natural sleep cycle.</string>
+    <string name="blue_light_filter">Blue Light Filter</string>
+    <string name="candle_light">Candle Light</string>
+    <string name="click_here_to_change_the_color_filter">Click here to change the color filter.</string>
+    <string name="how_it_works">How it works?</string>
 </resources>

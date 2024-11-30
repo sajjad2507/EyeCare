@@ -9,30 +9,28 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/splash_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/ic_splash_screen"
-        android:layout_marginTop="@dimen/__117sdp"
+        android:layout_marginTop="@dimen/_110sdp"
+        android:layout_marginBottom="@dimen/_300sdp"
+        android:layout_marginHorizontal="@dimen/__100sdp"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/baloo_bhaina_2"
         android:text="@string/blue_light"
-        android:textAlignment="center"
-        android:textColor="@color/light_white_text"
-        android:textSize="@dimen/__32ssp"
-        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_280sdp"
-        />
+        style="@style/text_view_32ssp_bold_baloo_bhaina_2" />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
@@ -69,11 +67,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/provide_digital_solution_for_health"
-        android:textColor="@color/light_white_text"
-        android:textSize="@dimen/__16ssp"
-        android:fontFamily="@font/baloo_bhaina_2"
         android:layout_marginBottom="@dimen/__25sdp"
-        />
+        style="@style/text_view_16ssp_baloo_bhaina_2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

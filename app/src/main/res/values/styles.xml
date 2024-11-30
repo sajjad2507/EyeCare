@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text_view_32ssp_bold_baloo_bhaina_2">
+        <item name="android:fontFamily">@font/baloo_bhaina_2</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/light_white_text</item>
+        <item name="android:textSize">@dimen/__32ssp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_view_16ssp_baloo_bhaina_2">
+        <item name="android:textColor">@color/light_white_text</item>
+        <item name="android:textSize">@dimen/__16ssp</item>
+        <item name="android:fontFamily">@font/baloo_bhaina_2</item>
+    </style>
+</resources>
