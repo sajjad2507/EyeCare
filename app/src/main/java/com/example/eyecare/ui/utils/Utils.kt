@@ -1,4 +1,4 @@
-package com.example.eyecare
+package com.example.eyecare.ui.utils
 
 import android.content.Context
 import android.os.Bundle

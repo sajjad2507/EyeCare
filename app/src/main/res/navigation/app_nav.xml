@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.example.eyecare.SplashScreenFragment"
+        android:name="com.example.eyecare.ui.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
-        android:name="com.example.eyecare.OnBoardingFragment"
+        android:name="com.example.eyecare.ui.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding" >
         <action
@@ -25,7 +25,16 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.eyecare.HomeFragment"
+        android:name="com.example.eyecare.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_filterDashboardFragment"
+            app:destination="@id/filterDashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterDashboardFragment"
+        android:name="com.example.eyecare.FilterDashboardFragment"
+        android:label="fragment_filter_dashboard"
+        tools:layout="@layout/fragment_filter_dashboard" />
 </navigation>

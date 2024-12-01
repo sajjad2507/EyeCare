@@ -17,4 +17,11 @@
     <string name="candle_light">Candle Light</string>
     <string name="click_here_to_change_the_color_filter">Click here to change the color filter.</string>
     <string name="how_it_works">How it works?</string>
+    <string name="ad_is_loading">Ad is loading</string>
+    <string name="_60s_pause">60s Pause</string>
+    <string name="auto_timer">Auto Timer</string>
+    <string name="intensity">Intensity</string>
+    <string name="_75">75%</string>
+    <string name="screen_dim">Screen Dim</string>
+    <string name="filter_dashboard">Filter Dashboard</string>
 </resources>

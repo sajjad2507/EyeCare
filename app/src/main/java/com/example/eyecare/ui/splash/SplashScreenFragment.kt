@@ -1,4 +1,4 @@
-package com.example.eyecare
+package com.example.eyecare.ui.splash
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentSplashScreenBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

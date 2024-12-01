@@ -1,4 +1,4 @@
-package com.example.eyecare
+package com.example.eyecare.ui.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.eyecare.Utils.setSingleClickListener
+import com.example.eyecare.R
+import com.example.eyecare.ui.utils.Utils.setSingleClickListener
 import com.example.eyecare.databinding.FragmentOnBoardingBinding
 
 class OnBoardingFragment : Fragment() {
