@@ -56,5 +56,6 @@ dependencies {
     implementation (libs.sdp.android)
 
     implementation (libs.lottie)
+    implementation(libs.easyprefs)
 
 }

@@ -14,4 +14,8 @@
         <item name="android:textSize">@dimen/__16ssp</item>
         <item name="android:fontFamily">@font/baloo_bhaina_2</item>
     </style>
+    <style name="ShapeAppearanceOverlay.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/__5sdp"
+    >
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/circular_view"
+        android:layout_width="@dimen/__40sdp"
+        android:layout_height="@dimen/__40sdp"
+        android:background="@color/light_white_text"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+        app:strokeColor="@color/light_white_text"
+        app:strokeWidth="@dimen/__1sdp"
+        />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/hamburger_icon"
+        android:layout_width="@dimen/__16sdp"
+        android:layout_height="@dimen/__16sdp"
+        android:src="@drawable/ic_candle"
+        app:layout_constraintBottom_toBottomOf="@id/circular_view"
+        app:layout_constraintEnd_toEndOf="@id/circular_view"
+        app:layout_constraintStart_toStartOf="@id/circular_view"
+        app:layout_constraintTop_toTopOf="@+id/circular_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

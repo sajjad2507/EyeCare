@@ -25,4 +25,7 @@
     <string name="screen_dim">Screen Dim</string>
     <string name="filter_dashboard">Filter Dashboard</string>
     <string name="blue">Blue</string>
+    <string name="color_temperature">Color Temperature</string>
+    <string name="_4500k">4500K</string>
+    <string name="dashboard">Dashboard</string>
 </resources>
