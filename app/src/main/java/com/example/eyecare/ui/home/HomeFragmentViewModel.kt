@@ -13,12 +13,17 @@ class HomeFragmentViewModel : ViewModel() {
     private val _intensityProgressFlow = MutableStateFlow<Int>(0)
     val intensityProgressFlow: StateFlow<Int> get() = _intensityProgressFlow
 
+    private val _isFilterEnable = MutableStateFlow<Boolean>(false)
+    val isFilterEnable: StateFlow<Boolean> get() = _isFilterEnable
+
     fun setDimLevel(progress: Int) = vmScopeLaunch {
         _dimProgressFlow.emit(progress)
+        _isFilterEnable.emit(true)
     }
 
     fun setIntensityLevel(progress: Int) = vmScopeLaunch {
         _intensityProgressFlow.emit(progress)
+        _isFilterEnable.emit(true)
     }
 
 }

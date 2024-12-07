@@ -56,6 +56,7 @@
             app:layout_constraintTop_toTopOf="@+id/menu" />
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_overlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:thumb="@drawable/thumb_drawable"
@@ -90,16 +91,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/filter_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <!--                <androidx.appcompat.widget.AppCompatImageView-->
+                <!--                    android:id="@+id/filter_icon"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginVertical="@dimen/__25sdp"-->
+                <!--                    android:layout_marginStart="@dimen/__16sdp"-->
+                <!--                    android:src="@drawable/candle"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/circular_view"
+                    android:layout_width="@dimen/__40sdp"
+                    android:layout_height="@dimen/__40sdp"
                     android:layout_marginVertical="@dimen/__25sdp"
                     android:layout_marginStart="@dimen/__16sdp"
-                    android:src="@drawable/candle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:background="@color/white"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="@dimen/__1sdp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/filter_icon"
+                    android:layout_width="@dimen/__16sdp"
+                    android:layout_height="@dimen/__16sdp"
+                    tools:src="@drawable/ic_candle"
+                    app:layout_constraintBottom_toBottomOf="@id/circular_view"
+                    app:layout_constraintEnd_toEndOf="@id/circular_view"
+                    app:layout_constraintStart_toStartOf="@id/circular_view"
+                    app:layout_constraintTop_toTopOf="@+id/circular_view" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/selected_filter_title"
@@ -113,8 +139,8 @@
                     android:layout_marginTop="@dimen/_minus1sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/select_filter_btn"
-                    app:layout_constraintStart_toEndOf="@+id/filter_icon"
-                    app:layout_constraintTop_toTopOf="@+id/filter_icon" />
+                    app:layout_constraintStart_toEndOf="@+id/circular_view"
+                    app:layout_constraintTop_toTopOf="@+id/circular_view" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/selected_filter_subtitle"
@@ -126,7 +152,7 @@
                     android:textColor="@color/light_white_text"
                     android:textSize="@dimen/__10ssp"
                     app:layout_constraintEnd_toEndOf="@+id/select_filter_btn"
-                    app:layout_constraintStart_toEndOf="@+id/filter_icon"
+                    app:layout_constraintStart_toEndOf="@+id/circular_view"
                     app:layout_constraintTop_toBottomOf="@+id/selected_filter_title" />
 
                 <androidx.appcompat.widget.AppCompatImageView

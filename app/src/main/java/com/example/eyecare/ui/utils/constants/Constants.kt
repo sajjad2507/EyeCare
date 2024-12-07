@@ -13,7 +13,15 @@ object Constants {
     const val DOWN_VALUE: String = "2000K"
     const val BULB_VALUE: String = "2700K"
     const val FLUORESCENT_VALUE: String = "3400K"
-    const val DEFAULT_VALUE: String = "0K"
+    const val EYE_CARE_VALUE: String = "0K"
+    const val MOON_LIGHT_VALUE: String = "900K"
+    const val SUN_RISE_LIGHT_VALUE: String = "2700K"
+    const val SUN_DOWN_LIGHT_VALUE: String = "1200K"
+    const val CANDLE_LIGHT_VALUE: String = "2200K"
+    const val TREES_LIGHT_VALUE: String = "1500K"
+    const val NORMAL_LIGHT_VALUE: String = "1800K"
+    const val NORMAL_FIRE_VALUE: String = "3200K"
+
 
     private const val NIGHT_LIGHT_COLOR: String = "#2C2C2C"
     private const val CANDLE_COLOR: String = "#FF5748"

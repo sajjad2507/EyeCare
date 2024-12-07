@@ -14,8 +14,8 @@ import androidx.lifecycle.Observer
 import com.example.eyecare.ui.utils.Utils.hasOverlayPermission
 import com.example.eyecare.ui.utils.constants.Constants.BULB_VALUE
 import com.example.eyecare.ui.utils.constants.Constants.CANDLE_VALUE
-import com.example.eyecare.ui.utils.constants.Constants.DEFAULT_VALUE
 import com.example.eyecare.ui.utils.constants.Constants.DOWN_VALUE
+import com.example.eyecare.ui.utils.constants.Constants.EYE_CARE_VALUE
 import com.example.eyecare.ui.utils.constants.Constants.FLUORESCENT_VALUE
 import com.example.eyecare.ui.utils.constants.Constants.NIGHT_LIGHT_VALUE
 import com.example.eyecare.ui.utils.preferences.EasyPrefs
@@ -125,7 +125,7 @@ class OverlayService : AccessibilityService() {
         if (overlayView.isAttachedToWindow.not()) return
         val alpha = (intensity / 100f) * 255
         val color = when (temp) {
-            DEFAULT_VALUE -> Color.argb(alpha.toInt(), 125, 0, 0)
+            EYE_CARE_VALUE -> Color.argb(alpha.toInt(), 125, 0, 0)
             NIGHT_LIGHT_VALUE -> Color.argb(alpha.toInt(), 61, 79, 102)
             CANDLE_VALUE -> Color.argb(alpha.toInt(), 255, 147, 0)
             DOWN_VALUE -> Color.argb(alpha.toInt(), 255, 223, 0)

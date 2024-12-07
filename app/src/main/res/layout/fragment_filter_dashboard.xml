@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FilterDashboardFragment"
+    tools:context=".ui.filterdashboard.FilterDashboardFragment"
     android:background="@color/light_black"
     android:paddingHorizontal="@dimen/__24sdp">
 
@@ -116,7 +116,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/item_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/__12sdp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

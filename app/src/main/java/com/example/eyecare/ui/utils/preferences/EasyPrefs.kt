@@ -5,6 +5,7 @@ import android.content.ContextWrapper
 import com.bluelightfilter.prefs.SharedPreferenceBooleanLiveData
 import com.bluelightfilter.prefs.SharedPreferenceIntLiveData
 import com.bluelightfilter.prefs.SharedPreferenceStringLiveData
+import com.example.eyecare.ui.utils.constants.Constants
 import com.pixplicity.easyprefs.library.Prefs
 
 object EasyPrefs {
@@ -44,7 +45,7 @@ object EasyPrefs {
     fun colorTemperatureLiveData(): SharedPreferenceStringLiveData {
         return SharedPreferenceStringLiveData(
             Prefs.getPreferences(),
-            KEY_COLOR_TEMPERATURE, "0K"
+            KEY_COLOR_TEMPERATURE, Constants.EYE_CARE_VALUE
         )
     }
 
@@ -84,7 +85,7 @@ object EasyPrefs {
     fun getFilterSwitchLive(): SharedPreferenceBooleanLiveData {
         return SharedPreferenceBooleanLiveData(
             Prefs.getPreferences(),
-            KEY_FILTER_ENABLED, true
+            KEY_FILTER_ENABLED, false
         )
     }
 

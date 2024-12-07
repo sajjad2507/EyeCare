@@ -9,12 +9,12 @@
         android:id="@+id/circular_view"
         android:layout_width="@dimen/__40sdp"
         android:layout_height="@dimen/__40sdp"
-        android:background="@color/light_white_text"
+        android:background="@color/white"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-        app:strokeColor="@color/light_white_text"
+        app:strokeColor="@color/white"
         app:strokeWidth="@dimen/__1sdp"
         />
     <androidx.appcompat.widget.AppCompatImageView

@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/filterDashboardFragment"
-        android:name="com.example.eyecare.FilterDashboardFragment"
+        android:name="com.example.eyecare.ui.filterdashboard.FilterDashboardFragment"
         android:label="fragment_filter_dashboard"
         tools:layout="@layout/fragment_filter_dashboard" />
 </navigation>
