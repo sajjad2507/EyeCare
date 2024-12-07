@@ -1,18 +1,31 @@
 package com.example.eyecare.ui.onboarding
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.eyecare.R
 import com.example.eyecare.ui.utils.Utils.setSingleClickListener
 import com.example.eyecare.databinding.FragmentOnBoardingBinding
+import com.example.eyecare.ui.utils.Utils
+import com.example.eyecare.ui.utils.Utils.hasOverlayPermission
 
 class OnBoardingFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardingBinding
     private var count = 0
+    private val requestOverlayPermissionLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (Settings.canDrawOverlays(requireContext())) {
+            findNavController().navigate(R.id.action_onBoardingFragment_to_homeFragment)
+        } else {
+
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,7 +82,12 @@ class OnBoardingFragment : Fragment() {
                 }
 
                 else -> {
-                    findNavController().navigate(R.id.action_onBoardingFragment_to_homeFragment)
+                    if(requireContext().hasOverlayPermission()) {
+                        findNavController().navigate(R.id.action_onBoardingFragment_to_homeFragment)
+                    }
+                    else{
+                        handleOverlayPermission()
+                    }
                 }
             }
         }
@@ -87,6 +105,13 @@ class OnBoardingFragment : Fragment() {
             imageView.setImageResource(image)
             indicatorIcon.setImageResource(indicator)
         }
+    }
+
+    private fun handleOverlayPermission() {
+        val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
+            data = Uri.parse("package:${requireContext().packageName}")
+        }
+        requestOverlayPermissionLauncher.launch(intent)
     }
 
 }

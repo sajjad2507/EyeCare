@@ -2,12 +2,18 @@ package com.example.eyecare.ui.utils
 
 import android.content.Context
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 object Utils {
     // Extension Functions
@@ -72,5 +78,12 @@ object Utils {
                 isClickable = true
             }, delayMillis)
         }
+    }
+    fun Context.hasOverlayPermission(): Boolean {
+        return Settings.canDrawOverlays(this)
+    }
+
+    fun ViewModel.vmScopeLaunch(action: suspend CoroutineScope.() -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) { action() }
     }
 }
