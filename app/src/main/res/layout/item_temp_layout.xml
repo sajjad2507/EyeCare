@@ -18,7 +18,7 @@
         app:strokeWidth="@dimen/__1sdp"
         />
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/hamburger_icon"
+        android:id="@+id/icon"
         android:layout_width="@dimen/__16sdp"
         android:layout_height="@dimen/__16sdp"
         android:src="@drawable/ic_candle"
