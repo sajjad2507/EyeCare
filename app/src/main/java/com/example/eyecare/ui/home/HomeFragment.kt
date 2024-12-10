@@ -1,13 +1,13 @@
 package com.example.eyecare.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentHomeBinding
@@ -35,41 +35,46 @@ class HomeFragment : Fragment() {
         dimLevelSetup()
         intensitySetup()
         allObservers()
-        prefObservers()
+        filterSwitchSetup()
     }
 
     private fun allObservers() {
         // Dim Level Observer
         launchWhenStarted {
             viewModel.dimProgressFlow.collectLatest {
+                binding.apply {
+                    dimPercentage.text = "$it%"
+                    dimSeekbar.progress = it
+                }
                 EasyPrefs.setDimLevel(it)
-                binding.dimPercentage.text = "$it%"
-                OverlayService.start(requireContext())
             }
         }
         // Intensity Level Observer
         launchWhenStarted {
             viewModel.intensityProgressFlow.collectLatest {
+                binding.apply {
+                    intensityPercentage.text = "$it%"
+                    intensitySeekbar.progress = it
+                }
                 EasyPrefs.setIntensity(it)
-                binding.intensityPercentage.text = "$it%"
             }
         }
         launchWhenStarted {
             viewModel.isFilterEnable.collectLatest {
-                EasyPrefs.setFilterEnabled(it)
                 binding.switchOverlay.isChecked = it
+                Log.d("Filter",it.toString())
+                EasyPrefs.setFilterEnabled(it)
+                if(it){
+                    OverlayService.start(requireContext())
+                }else{
+                    OverlayService.stop(requireContext())
+                }
             }
         }
-    }
-
-    // Preferences Observers
-    private fun prefObservers() {
         launchWhenStarted {
-            val colorTemperateLiveData = EasyPrefs.colorTemperatureLiveData()
-            val colorTemperateObserver = Observer<String> { value ->
-                setupTemperatureLayout(value)
+            viewModel.tempValueFlow.collectLatest {
+                setupTemperatureLayout(it)
             }
-            colorTemperateLiveData.observeForever(colorTemperateObserver)
         }
     }
 
@@ -154,5 +159,23 @@ class HomeFragment : Fragment() {
 
             })
         }
+    }
+    private fun filterSwitchSetup() {
+        binding.switchOverlay.setOnCheckedChangeListener{ _,isChecked->
+            viewModel.setUpSwitch(binding.switchOverlay.isChecked)
+            binding.switchOverlay.isChecked = isChecked
+            EasyPrefs.setFilterEnabled(isChecked)
+            if(isChecked){
+                OverlayService.start(requireContext())
+            }else{
+                OverlayService.stop(requireContext())
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.setTemperature()
+        viewModel.setUpFilter()
     }
 }

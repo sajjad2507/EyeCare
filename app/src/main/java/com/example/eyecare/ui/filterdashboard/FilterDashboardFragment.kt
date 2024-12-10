@@ -1,9 +1,11 @@
 package com.example.eyecare.ui.filterdashboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,6 +18,8 @@ import com.example.eyecare.ui.utils.Utils.launchWhenStarted
 import com.example.eyecare.ui.utils.Utils.setSingleClickListener
 import com.example.eyecare.ui.utils.constants.Constants
 import com.example.eyecare.ui.utils.preferences.EasyPrefs
+import com.example.eyecare.ui.utils.services.OverlayService
+import kotlinx.coroutines.flow.collectLatest
 
 class FilterDashboardFragment : Fragment() {
     private lateinit var binding: FragmentFilterDashboardBinding
@@ -53,7 +57,9 @@ class FilterDashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupLayout()
         allObservers()
-        prefObservers()
+        dimLevelSetup()
+        intensitySetup()
+        filterSwitchSetup()
     }
 
     private fun setupLayout(){
@@ -63,22 +69,46 @@ class FilterDashboardFragment : Fragment() {
             adapter.submitList(itemsList)
         }
     }
-    private fun prefObservers() {
-        launchWhenStarted {
-            val colorTemperateLiveData = EasyPrefs.colorTemperatureLiveData()
-            val colorTemperateObserver = Observer<String> { value ->
-                binding.temperaturePercentage.text = value
-            }
-            colorTemperateLiveData.observeForever(colorTemperateObserver)
-        }
-    }
 
     private fun allObservers() {
+        // Dim Level Observer
         launchWhenStarted {
-
+            viewModel.dimProgressFlow.collectLatest {
+                binding.apply {
+                    dimPercentage.text = "$it%"
+                    dimSeekbar.progress = it
+                }
+                EasyPrefs.setDimLevel(it)
+            }
+        }
+        // Intensity Level Observer
+        launchWhenStarted {
+            viewModel.intensityProgressFlow.collectLatest {
+                binding.apply {
+                    intensityPercentage.text = "$it%"
+                    intensitySeekbar.progress = it
+                }
+                EasyPrefs.setIntensity(it)
+            }
+        }
+        launchWhenStarted {
+            viewModel.isFilterEnable.collectLatest {
+                Log.d("Filter",it.toString())
+                binding.switchOverlay.isChecked = it
+                EasyPrefs.setFilterEnabled(it)
+                if(it){
+                    OverlayService.start(requireContext())
+                }else{
+                    OverlayService.stop(requireContext())
+                }
+            }
+        }
+        launchWhenStarted {
+            viewModel.tempValueFlow.collectLatest {
+//                setupTemperatureLayout(it)
+            }
         }
     }
-
     private fun onItemClicked(position: Int, itemBinding: ItemTempLayoutBinding) {
         when (position) {
             0 -> {
@@ -109,5 +139,58 @@ class FilterDashboardFragment : Fragment() {
         adapter.prefObservers(itemBinding,position)
         adapter.notifyDataSetChanged()
     }
+    // Dim Level Setup
+    private fun dimLevelSetup() {
+        binding.apply {
+            dimSeekbar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    viewModel.setDimLevel(progress)
+                }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                }
+
+            })
+        }
+    }
+    // Intensity Level Setup
+    private fun intensitySetup() {
+        binding.apply {
+            intensitySeekbar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    viewModel.setIntensityLevel(progress)
+                }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                }
+
+            })
+        }
+    }
+    private fun filterSwitchSetup() {
+        binding.switchOverlay.setOnCheckedChangeListener{ _,isChecked->
+            binding.switchOverlay.isChecked = isChecked
+            EasyPrefs.setFilterEnabled(isChecked)
+            if(isChecked){
+                OverlayService.start(requireContext())
+            }else{
+                OverlayService.stop(requireContext())
+            }
+            viewModel.setUpSwitch(isChecked)
+        }
+    }
+
 
 }

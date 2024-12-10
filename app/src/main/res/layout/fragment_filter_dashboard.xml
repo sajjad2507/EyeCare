@@ -66,6 +66,7 @@
             app:layout_constraintTop_toTopOf="@+id/menu" />
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_overlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:thumb="@drawable/thumb_drawable"
@@ -249,7 +250,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/__22sdp"
             android:max="75"
-            android:progress="25"
+            android:progress="0"
             android:progressTint="@color/white"
             android:thumb="@drawable/ic_thumb_filter_selected"
             app:layout_constraintEnd_toEndOf="parent"
@@ -310,7 +311,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/__22sdp"
             android:max="75"
-            android:progress="25"
+            android:progress="0"
             android:progressTint="@color/white"
             android:thumb="@drawable/ic_thumb_filter_selected"
             app:layout_constraintEnd_toEndOf="parent"
