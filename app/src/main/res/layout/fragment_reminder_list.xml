@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ReminderListFragment"
+    android:background="@color/light_black"
+    android:paddingHorizontal="@dimen/__24sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/__24sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/menu_text"
+                android:layout_width="@dimen/__24sdp"
+                android:layout_height="@dimen/__24sdp"
+                android:layout_marginTop="@dimen/__8sdp"
+                android:src="@drawable/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/blue_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/__8sdp"
+            android:layout_marginTop="@dimen/__4sdp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/save"
+            android:textColor="@color/blue_alpha_50"
+            android:textSize="@dimen/__20ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/menu"
+            app:layout_constraintTop_toTopOf="@+id/menu" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/light_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/__6sdp"
+            android:layout_marginTop="@dimen/__4sdp"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingTop="1dp"
+            android:text="@string/reminder"
+            android:textColor="@color/light_white_text"
+            android:textSize="@dimen/__18ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/blue_title_text"
+            app:layout_constraintTop_toTopOf="@+id/menu" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/save_image_btn"
+            android:layout_width="@dimen/__24sdp"
+            android:layout_height="@dimen/__24sdp"
+            android:thumb="@drawable/thumb_drawable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/menu"
+            android:src="@drawable/ic_save"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,4 +37,19 @@
         android:name="com.example.eyecare.ui.filterdashboard.FilterDashboardFragment"
         android:label="fragment_filter_dashboard"
         tools:layout="@layout/fragment_filter_dashboard" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.eyecare.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/addReminderFragment"
+        android:name="com.example.eyecare.AddReminderFragment"
+        android:label="fragment_add_reminder"
+        tools:layout="@layout/fragment_add_reminder" />
+    <fragment
+        android:id="@+id/reminderListFragment"
+        android:name="com.example.eyecare.ReminderListFragment"
+        android:label="fragment_reminder_list"
+        tools:layout="@layout/fragment_reminder_list" />
 </navigation>

@@ -250,7 +250,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/__22sdp"
             android:max="75"
-            android:progress="0"
             android:progressTint="@color/white"
             android:thumb="@drawable/ic_thumb_filter_selected"
             app:layout_constraintEnd_toEndOf="parent"
@@ -311,7 +310,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/__22sdp"
             android:max="75"
-            android:progress="0"
             android:progressTint="@color/white"
             android:thumb="@drawable/ic_thumb_filter_selected"
             app:layout_constraintEnd_toEndOf="parent"
@@ -320,4 +318,99 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/auto_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/__12sdp"
+        android:background="@drawable/stroke_bg"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dim">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/auto_timer_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/__12sdp"
+            android:layout_marginStart="@dimen/__24sdp"
+            android:src="@drawable/auto_timer_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/auto_timer_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:thumb="@drawable/thumb_drawable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:thumbTint="@color/blue"
+            app:track="@drawable/track_drawable"
+            android:layout_marginEnd="@dimen/__5sdp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/auto_timer_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/__12sdp"
+            android:text="@string/auto_timer"
+            android:textColor="@color/light_white_text"
+            android:textSize="@dimen/__16ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/auto_timer_switch"
+            app:layout_constraintStart_toEndOf="@+id/auto_timer_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/__12sdp"
+        android:background="@drawable/stroke_bg"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auto_timer">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/pause_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/__12sdp"
+            android:layout_marginStart="@dimen/__24sdp"
+            android:src="@drawable/pause_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/pause_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:thumb="@drawable/thumb_drawable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:thumbTint="@color/blue"
+            app:track="@drawable/track_drawable"
+            android:layout_marginEnd="@dimen/__5sdp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pause_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/__12sdp"
+            android:text="@string/_60s_pause"
+            android:textColor="@color/light_white_text"
+            android:textSize="@dimen/__16ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/pause_switch"
+            app:layout_constraintStart_toEndOf="@+id/pause_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
