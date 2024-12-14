@@ -97,8 +97,10 @@ class FilterDashboardFragment : Fragment() {
                 binding.switchOverlay.isChecked = it
                 EasyPrefs.setFilterEnabled(it)
                 if(it){
+                    Log.d("Start Service","Start Service")
                     OverlayService.start(requireContext())
                 }else{
+                    Log.d("Stop Service","Stop Service")
                     OverlayService.stop(requireContext())
                 }
             }
@@ -148,7 +150,9 @@ class FilterDashboardFragment : Fragment() {
                     progress: Int,
                     fromUser: Boolean
                 ) {
-                    viewModel.setDimLevel(progress)
+                    if(fromUser){
+                        viewModel.setDimLevel(progress)
+                    }
                 }
                 override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 }
@@ -168,7 +172,9 @@ class FilterDashboardFragment : Fragment() {
                     progress: Int,
                     fromUser: Boolean
                 ) {
-                    viewModel.setIntensityLevel(progress)
+                    if(fromUser){
+                        viewModel.setIntensityLevel(progress)
+                    }
                 }
                 override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 }

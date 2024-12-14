@@ -22,11 +22,13 @@ class HomeFragmentViewModel : ViewModel() {
     val tempValueFlow : StateFlow<String> get() = _tempValueFlow
 
     fun setDimLevel(progress: Int) = vmScopeLaunch {
+        Log.d("Dim Change","Dim Change")
         _dimProgressFlow.emit(progress)
         _isFilterEnable.emit(true)
     }
 
     fun setIntensityLevel(progress: Int) = vmScopeLaunch {
+        Log.d("Intensity Change","Intensity Change")
         _intensityProgressFlow.emit(progress)
         _isFilterEnable.emit(true)
     }

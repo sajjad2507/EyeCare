@@ -129,7 +129,9 @@ class HomeFragment : Fragment() {
                     progress: Int,
                     fromUser: Boolean
                 ) {
-                    viewModel.setDimLevel(progress)
+                    if (fromUser) {
+                        viewModel.setDimLevel(progress)
+                    }
                 }
                 override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 }
@@ -149,7 +151,9 @@ class HomeFragment : Fragment() {
                     progress: Int,
                     fromUser: Boolean
                 ) {
-                    viewModel.setIntensityLevel(progress)
+                    if (fromUser) {
+                        viewModel.setIntensityLevel(progress)
+                    }
                 }
                 override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 }

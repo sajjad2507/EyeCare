@@ -13,7 +13,7 @@ object EasyPrefs {
     private const val KEY_FILTER_ENABLED = "KEY_FILTER_ENABLED"
     private const val KEY_COLOR_TEMPERATURE = "KEY_COLOR_TEMPERATURE"
     private const val KEY_INTENSITY = "KEY_INTENSITY"
-    private const val KEY_INTENSITY_DEFAULT = 30
+    private const val KEY_INTENSITY_DEFAULT = 0
     private const val KEY_DIM_LEVEL = "KEY_DIM_LEVEL"
     private const val KEY_COLOR_VALUE = "KEY_COLOR_VALUE"
     private const val KEY_START_TIME = "KEY_START_TIME"
