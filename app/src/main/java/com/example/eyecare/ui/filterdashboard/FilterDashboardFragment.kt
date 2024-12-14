@@ -19,6 +19,7 @@ import com.example.eyecare.ui.utils.Utils.setSingleClickListener
 import com.example.eyecare.ui.utils.constants.Constants
 import com.example.eyecare.ui.utils.preferences.EasyPrefs
 import com.example.eyecare.ui.utils.services.OverlayService
+import com.example.eyecare.ui.utils.services.TimeCheckService
 import kotlinx.coroutines.flow.collectLatest
 
 class FilterDashboardFragment : Fragment() {
@@ -60,6 +61,8 @@ class FilterDashboardFragment : Fragment() {
         dimLevelSetup()
         intensitySetup()
         filterSwitchSetup()
+        setUpPause()
+        prefsObserver()
     }
 
     private fun setupLayout(){
@@ -68,6 +71,35 @@ class FilterDashboardFragment : Fragment() {
             itemRecyclerView.adapter = adapter
             adapter.submitList(itemsList)
         }
+    }
+
+    private fun prefsObserver() {
+        launchWhenStarted {
+            val secondsLiveData = EasyPrefs.getSecondsLive()
+            val secondsObserver = Observer<Int> { value ->
+                if(EasyPrefs.isPauseEnable()){
+                    upDatePauseLayout(value)
+                }
+            }
+            secondsLiveData.observeForever(secondsObserver)
+        }
+        launchWhenStarted {
+            if(requireContext() != null){
+                val filterLiveData = EasyPrefs.getFilterSwitchLive()
+                val filterObserver = Observer<Boolean> { value ->
+                    updateSwitch(value)
+                }
+                filterLiveData.observeForever(filterObserver)
+            }
+        }
+    }
+
+    private fun updateSwitch(value: Boolean) {
+        binding.switchOverlay.isChecked = value
+    }
+
+    private fun upDatePauseLayout(seconds: Int) {
+        binding.pauseTitle.text = "${seconds}s"
     }
 
     private fun allObservers() {
@@ -195,6 +227,19 @@ class FilterDashboardFragment : Fragment() {
                 OverlayService.stop(requireContext())
             }
             viewModel.setUpSwitch(isChecked)
+        }
+    }
+
+    private fun setUpPause() {
+        binding.pause.setSingleClickListener {
+            Log.d("TimeCheckService","TimeCheckServie")
+            if(EasyPrefs.isPauseEnable()){
+                TimeCheckService.stop(requireContext())
+                OverlayService.start(requireContext())
+                binding.pauseTitle.text = requireContext().getString(R.string._60s_pause)
+            } else{
+                TimeCheckService.start(requireContext())
+            }
         }
     }
 

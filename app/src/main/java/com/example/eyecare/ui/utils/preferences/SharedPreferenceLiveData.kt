@@ -37,6 +37,7 @@ class SharedPreferenceIntLiveData(sharedPrefs: SharedPreferences, key: String, d
         sharedPrefs.getInt(key, defValue)
 }
 
+
 class SharedPreferenceStringLiveData(
     sharedPrefs: SharedPreferences,
     key: String,

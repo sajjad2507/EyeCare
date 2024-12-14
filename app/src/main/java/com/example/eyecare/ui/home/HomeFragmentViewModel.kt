@@ -36,6 +36,7 @@ class HomeFragmentViewModel : ViewModel() {
     fun setTemperature() = vmScopeLaunch {
         _tempValueFlow.emit(EasyPrefs.colorTemperature())
     }
+
     fun setUpSwitch(checked: Boolean)= vmScopeLaunch {
         _isFilterEnable.emit(checked)
     }

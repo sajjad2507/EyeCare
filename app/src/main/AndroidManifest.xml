@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity"
+        android:name=".ui.App"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
@@ -47,6 +48,9 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accessibility_config" />
         </service>
+        <service
+            android:name=".ui.utils.services.TimeCheckService"
+            android:exported="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -27,6 +27,7 @@ object EasyPrefs {
     private const val KEY_LIGHT_ENABLE = "KEY_LIGHT_ENABLE"
     private const val KEY_PAUSE_ENABLE = "KEY_PAUSE_ENABLE"
     private const val KEY_SETTING_ENABLE = "KEY_SETTING_ENABLE"
+    private const val KEY_SECONDS_COUNT = "KEY_SECONDS_COUNT"
 
 
     fun init(context: Context) {
@@ -123,6 +124,18 @@ object EasyPrefs {
 
     fun getDimLevelLive(): SharedPreferenceIntLiveData {
         return SharedPreferenceIntLiveData(Prefs.getPreferences(), KEY_DIM_LEVEL, 0)
+    }
+
+    fun getSeconds(): Int {
+        return Prefs.getInt(KEY_SECONDS_COUNT, 60)
+    }
+
+    fun setSeconds(seconds: Int) {
+        Prefs.putInt(KEY_SECONDS_COUNT, seconds)
+    }
+
+    fun getSecondsLive(): SharedPreferenceIntLiveData {
+        return SharedPreferenceIntLiveData(Prefs.getPreferences(), KEY_SECONDS_COUNT, 60)
     }
 
     fun getSwitchTimer(): Boolean {
