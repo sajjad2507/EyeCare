@@ -21,6 +21,9 @@ class HomeFragmentViewModel : ViewModel() {
     private val _tempValueFlow = MutableStateFlow<String>(EasyPrefs.colorTemperature())
     val tempValueFlow : StateFlow<String> get() = _tempValueFlow
 
+    init {
+        setUpFilter()
+    }
     fun setDimLevel(progress: Int) = vmScopeLaunch {
         Log.d("Dim Change","Dim Change")
         _dimProgressFlow.emit(progress)
@@ -33,16 +36,15 @@ class HomeFragmentViewModel : ViewModel() {
         _isFilterEnable.emit(true)
     }
 
-    fun setTemperature() = vmScopeLaunch {
-        _tempValueFlow.emit(EasyPrefs.colorTemperature())
-    }
-
     fun setUpSwitch(checked: Boolean)= vmScopeLaunch {
         _isFilterEnable.emit(checked)
     }
     fun setUpFilter() = vmScopeLaunch {
         Log.d("Filter",EasyPrefs.isFilterEnabled().toString())
         _isFilterEnable.emit(EasyPrefs.isFilterEnabled())
+    }
+    fun setUpPause(checked: Boolean) = vmScopeLaunch {
+        _isFilterEnable.emit(checked)
     }
 
 }

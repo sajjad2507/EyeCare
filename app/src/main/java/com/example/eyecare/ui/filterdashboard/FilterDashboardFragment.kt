@@ -1,11 +1,14 @@
 package com.example.eyecare.ui.filterdashboard
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -15,6 +18,8 @@ import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentFilterDashboardBinding
 import com.example.eyecare.databinding.ItemTempLayoutBinding
 import com.example.eyecare.ui.utils.Utils.launchWhenStarted
+import com.example.eyecare.ui.utils.Utils.navigateBack
+import com.example.eyecare.ui.utils.Utils.onBackPressed
 import com.example.eyecare.ui.utils.Utils.setSingleClickListener
 import com.example.eyecare.ui.utils.constants.Constants
 import com.example.eyecare.ui.utils.preferences.EasyPrefs
@@ -23,7 +28,8 @@ import com.example.eyecare.ui.utils.services.TimeCheckService
 import kotlinx.coroutines.flow.collectLatest
 
 class FilterDashboardFragment : Fragment() {
-    private lateinit var binding: FragmentFilterDashboardBinding
+    private var _binding: FragmentFilterDashboardBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: FilterDashboardViewModel by viewModels()
     private val adapter : FilterDashboardAdapter by lazy {
         FilterDashboardAdapter(onItemClick = { position,binding->
@@ -50,7 +56,7 @@ class FilterDashboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFilterDashboardBinding.inflate(layoutInflater)
+        _binding = FragmentFilterDashboardBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -62,7 +68,10 @@ class FilterDashboardFragment : Fragment() {
         intensitySetup()
         filterSwitchSetup()
         setUpPause()
-        prefsObserver()
+        setupLayoutInitially()
+        onBackPressed {
+            navigateBack()
+        }
     }
 
     private fun setupLayout(){
@@ -73,33 +82,12 @@ class FilterDashboardFragment : Fragment() {
         }
     }
 
-    private fun prefsObserver() {
-        launchWhenStarted {
-            val secondsLiveData = EasyPrefs.getSecondsLive()
-            val secondsObserver = Observer<Int> { value ->
-                if(EasyPrefs.isPauseEnable()){
-                    upDatePauseLayout(value)
-                }
-            }
-            secondsLiveData.observeForever(secondsObserver)
+    private fun setupLayoutInitially() {
+        if(EasyPrefs.isFilterEnabled()){
+            binding.switchOverlay.isChecked = true
+        }else{
+            binding.switchOverlay.isChecked = false
         }
-        launchWhenStarted {
-            if(requireContext() != null){
-                val filterLiveData = EasyPrefs.getFilterSwitchLive()
-                val filterObserver = Observer<Boolean> { value ->
-                    updateSwitch(value)
-                }
-                filterLiveData.observeForever(filterObserver)
-            }
-        }
-    }
-
-    private fun updateSwitch(value: Boolean) {
-        binding.switchOverlay.isChecked = value
-    }
-
-    private fun upDatePauseLayout(seconds: Int) {
-        binding.pauseTitle.text = "${seconds}s"
     }
 
     private fun allObservers() {
@@ -220,6 +208,7 @@ class FilterDashboardFragment : Fragment() {
     private fun filterSwitchSetup() {
         binding.switchOverlay.setOnCheckedChangeListener{ _,isChecked->
             binding.switchOverlay.isChecked = isChecked
+            Log.d("OverlaySwitchClick","Swicth$isChecked")
             EasyPrefs.setFilterEnabled(isChecked)
             if(isChecked){
                 OverlayService.start(requireContext())
@@ -233,15 +222,35 @@ class FilterDashboardFragment : Fragment() {
     private fun setUpPause() {
         binding.pause.setSingleClickListener {
             Log.d("TimeCheckService","TimeCheckServie")
-            if(EasyPrefs.isPauseEnable()){
-                TimeCheckService.stop(requireContext())
-                OverlayService.start(requireContext())
-                binding.pauseTitle.text = requireContext().getString(R.string._60s_pause)
+            if(!EasyPrefs.isPauseEnable()){
+                viewModel.setUpPause(false)
+                startTimeCheckService(requireContext())
             } else{
-                TimeCheckService.start(requireContext())
+                TimeCheckService.stop(requireContext())
+                EasyPrefs.setPauseEnable(false)
+                viewModel.setUpPause(true)
+                binding.pauseTitle.text = requireContext().getString(R.string._60s_pause)
             }
         }
     }
+    private fun startTimeCheckService(context: Context) {
+        val serviceIntent = Intent(context, TimeCheckService::class.java)
+        ContextCompat.startForegroundService(context, serviceIntent)
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
+//    override fun onResume() {
+//        super.onResume()
+//        prefsObserver()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        EasyPrefs.getSecondsLive().removeObservers(viewLifecycleOwner)
+//        EasyPrefs.getFilterSwitchLive().removeObservers(viewLifecycleOwner)
+//    }
 }

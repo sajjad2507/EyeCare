@@ -44,4 +44,7 @@ class FilterDashboardViewModel : ViewModel() {
         Log.d("Filter",EasyPrefs.isFilterEnabled().toString())
         _isFilterEnable.emit(EasyPrefs.isFilterEnabled())
     }
+    fun setUpPause(checked: Boolean) = vmScopeLaunch {
+        _isFilterEnable.emit(checked)
+    }
 }
