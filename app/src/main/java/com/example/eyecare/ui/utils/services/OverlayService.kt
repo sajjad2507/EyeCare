@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.PixelFormat
 import android.graphics.Point
 import android.os.Build
+import android.util.Log
 import android.view.Gravity
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
@@ -29,6 +30,7 @@ class OverlayService : AccessibilityService() {
 
         @JvmStatic
         fun start(context: Context) {
+            Log.d("Start Service","Start Overlay Service")
             val intent = Intent(context, OverlayService::class.java)
             context.startService(intent)
         }

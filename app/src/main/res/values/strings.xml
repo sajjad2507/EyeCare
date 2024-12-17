@@ -39,4 +39,7 @@
     <string name="save">Save</string>
     <string name="reminder">Reminder</string>
     <string name="enter_heading">Enter Heading ..</string>
+    <string name="start">Start</string>
+    <string name="time">Time</string>
+    <string name="end">End</string>
 </resources>

@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.eyecare"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.eyecare"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -57,5 +57,7 @@ dependencies {
 
     implementation (libs.lottie)
     implementation(libs.easyprefs)
+
+    implementation (libs.androidx.work.runtime.ktx)
 
 }

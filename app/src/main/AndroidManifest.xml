@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -52,6 +53,10 @@
             android:name=".ui.utils.services.TimeCheckService"
             android:exported="false"
             />
+        <service
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            android:permission="android.permission.FOREGROUND_SERVICE"
+            android:exported="false"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
