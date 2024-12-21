@@ -11,8 +11,6 @@ import android.widget.SeekBar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentFilterDashboardBinding
@@ -36,7 +34,6 @@ class FilterDashboardFragment : Fragment() {
             onItemClicked(position,binding)
         })
     }
-
     private val itemsList = mutableListOf<Int>()
 
     init {
@@ -79,6 +76,9 @@ class FilterDashboardFragment : Fragment() {
             itemRecyclerView.layoutManager = GridLayoutManager(requireContext(),5)
             itemRecyclerView.adapter = adapter
             adapter.submitList(itemsList)
+            backIcon.setSingleClickListener {
+
+            }
         }
     }
 

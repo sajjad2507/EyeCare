@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -59,5 +60,11 @@ dependencies {
     implementation(libs.easyprefs)
 
     implementation (libs.androidx.work.runtime.ktx)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    // Kotlin extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
 
 }

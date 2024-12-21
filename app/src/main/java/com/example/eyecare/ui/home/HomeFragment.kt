@@ -61,6 +61,11 @@ class HomeFragment : Fragment() {
         }else{
             binding.switchOverlay.isChecked = false
         }
+        binding.apply {
+            menu.setSingleClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
+            }
+        }
     }
 
     private fun allObservers() {

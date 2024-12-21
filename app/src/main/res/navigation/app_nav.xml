@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_filterDashboardFragment"
             app:destination="@id/filterDashboardFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/filterDashboardFragment"
@@ -39,17 +42,25 @@
         tools:layout="@layout/fragment_filter_dashboard" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.example.eyecare.SettingFragment"
+        android:name="com.example.eyecare.ui.settings.SettingFragment"
         android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_reminderListFragment"
+            app:destination="@id/reminderListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addReminderFragment"
-        android:name="com.example.eyecare.AddReminderFragment"
+        android:name="com.example.eyecare.ui.reminder.addreminder.AddReminderFragment"
         android:label="fragment_add_reminder"
         tools:layout="@layout/fragment_add_reminder" />
     <fragment
         android:id="@+id/reminderListFragment"
-        android:name="com.example.eyecare.ReminderListFragment"
+        android:name="com.example.eyecare.ui.reminder.reminderlist.ReminderListFragment"
         android:label="fragment_reminder_list"
-        tools:layout="@layout/fragment_reminder_list" />
+        tools:layout="@layout/fragment_reminder_list" >
+        <action
+            android:id="@+id/action_reminderListFragment_to_addReminderFragment"
+            app:destination="@id/addReminderFragment" />
+    </fragment>
 </navigation>

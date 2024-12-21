@@ -42,4 +42,8 @@
     <string name="start">Start</string>
     <string name="time">Time</string>
     <string name="end">End</string>
+    <string name="all">All</string>
+    <string name="personal">Personal</string>
+    <string name="work">Work</string>
+    <string name="study">Study</string>
 </resources>

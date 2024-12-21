@@ -12,6 +12,7 @@ lottie = "6.0.0"
 material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+roomRuntime = "2.6.1"
 sdpAndroid = "1.1.1"
 sspAndroid = "1.1.1"
 navigationFragmentKtx = "2.8.4"
@@ -20,6 +21,9 @@ workRuntimeKtx = "2.10.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 easyprefs = { module = "com.pixplicity.easyprefs:EasyPrefs", version.ref = "easyprefs" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
