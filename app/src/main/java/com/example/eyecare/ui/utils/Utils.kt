@@ -4,8 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
@@ -51,6 +54,9 @@ object Utils {
 
     fun Fragment.navigateBack() {
         findNavController().navigateUp()
+    }
+    fun TextView.setTextColorRes(@ColorRes colorRes: Int) {
+        this.setTextColor(ContextCompat.getColor(context, colorRes))
     }
 
     fun Fragment.navigate(

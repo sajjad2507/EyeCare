@@ -14,6 +14,7 @@ import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentReminderListBinding
 import com.example.eyecare.ui.utils.Utils.launchWhenStarted
 import com.example.eyecare.ui.utils.Utils.setSingleClickListener
+import com.example.eyecare.ui.utils.Utils.setTextColorRes
 import com.example.eyecare.ui.utils.roomdb.AppDatabase
 import com.example.eyecare.ui.utils.roomdb.repository.ReminderRepository
 import com.example.eyecare.ui.utils.roomdb.viewmodel.ReminderViewModel
@@ -82,6 +83,77 @@ class ReminderListFragment : Fragment() {
                 adapter.submitList(it)
             }
         }
+        launchWhenStarted {
+            viewModel.selectedTypePosition.collectLatest {
+                when(it){
+                    0-> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
+                            adapter.submitList(reminders)
+                        }
+                        binding.apply {
+                            allTypes.setTextColorRes(R.color.blue)
+                            personalType.setTextColorRes(R.color.white)
+                            workTypes.setTextColorRes(R.color.white)
+                            studyTypes.setTextColorRes(R.color.white)
+                        }
+                    }
+                    1-> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
+                            val filteredReminders = reminders.filter { type->
+                                type.reminderType == "Personal"
+                            }
+                            adapter.submitList(filteredReminders)
+                        }
+                        binding.apply {
+                            allTypes.setTextColorRes(R.color.white)
+                            personalType.setTextColorRes(R.color.blue)
+                            workTypes.setTextColorRes(R.color.white)
+                            studyTypes.setTextColorRes(R.color.white)
+                        }
+                    }
+                    2-> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
+                            val filteredReminders = reminders.filter { type->
+                                type.reminderType == "Work"
+                            }
+                            adapter.submitList(filteredReminders)
+                        }
+                        binding.apply {
+                            allTypes.setTextColorRes(R.color.white)
+                            personalType.setTextColorRes(R.color.white)
+                            workTypes.setTextColorRes(R.color.blue)
+                            studyTypes.setTextColorRes(R.color.white)
+                        }
+                    }
+                    3-> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
+                            val filteredReminders = reminders.filter { type->
+                                type.reminderType == "Study"
+                            }
+                            adapter.submitList(filteredReminders)
+                        }
+                        binding.apply {
+                            allTypes.setTextColorRes(R.color.white)
+                            personalType.setTextColorRes(R.color.white)
+                            workTypes.setTextColorRes(R.color.white)
+                            studyTypes.setTextColorRes(R.color.blue)
+                        }
+                    }
+                    else->{
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
+                            adapter.submitList(reminders)
+                        }
+                        binding.apply {
+                            allTypes.setTextColorRes(R.color.blue)
+                            personalType.setTextColorRes(R.color.white)
+                            workTypes.setTextColorRes(R.color.white)
+                            studyTypes.setTextColorRes(R.color.white)
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
 //    private fun allObservers() {
