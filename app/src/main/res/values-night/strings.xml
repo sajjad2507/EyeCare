@@ -44,9 +44,8 @@
     <string name="personal">Personal</string>
     <string name="work">Work</string>
     <string name="study">Study</string>
-    <string name="enable_overlay_service_for_eye_care">Enable Overlay Service for Eye Care</string>
-    <string name="permission_is_needed_to_apply_a_blue_light_filter_for_reduced_eye_strain_and_better_comfort_especially_in_low_light_conditions">Permission is needed to apply a blue light filter for reduced eye strain and better comfort, especially in low-light conditions.</string>
-    <string name="accessibility_service_permission_is_required_to_automatically_adjust_the_blue_light_filter_for_seamless_continuous_eye_protection_across_all_apps">Accessibility Service permission is required to automatically adjust the blue light filter for seamless, continuous eye protection across all apps.</string>
+    <string name="enable_overlay_service_for_eye_care">Enable Overlay and Accessibility Service for Eye Care</string>
+    <string name="permission_is_needed_to_apply_a_blue_light_filter_for_reduced_eye_strain_and_better_comfort_especially_in_low_light_conditions">Overlay and Accessibility Service permissions are needed to apply a blue light filter for reduced eye strain and better comfort, especially in low-light conditions.</string>
     <string name="skip_for_now">Skip For Now</string>
     <string name="allow">Allow</string>
 </resources>

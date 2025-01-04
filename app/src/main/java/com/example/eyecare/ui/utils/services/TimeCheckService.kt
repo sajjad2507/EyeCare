@@ -24,6 +24,7 @@ class TimeCheckService : Service() {
         fun stop(context: Context) {
             val intent = Intent(context, TimeCheckService::class.java)
             context.stopService(intent)
+            EasyPrefs.setSeconds(60)
         }
     }
 
@@ -31,8 +32,8 @@ class TimeCheckService : Service() {
     private val timeRunnable = object : Runnable {
         @RequiresApi(Build.VERSION_CODES.O)
         override fun run() {
-            Log.d("Check Time","Check Time")
             checkTime()
+            EasyPrefs.setSeconds(EasyPrefs.getSeconds()-1)
             timeHandler.postDelayed(this, 1000)
         }
     }

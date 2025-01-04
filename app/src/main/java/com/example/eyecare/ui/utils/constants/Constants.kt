@@ -8,11 +8,7 @@ object Constants {
     private const val FLUORESCENT: String = "Fluorescent\n" +
             "Light"
     private const val UNSELECTED_COLOR: String = "#D9D9D9"
-    const val NIGHT_LIGHT_VALUE: String = "3200K"
-    const val CANDLE_VALUE: String = "1800K"
-    const val DOWN_VALUE: String = "2000K"
-    const val BULB_VALUE: String = "2700K"
-    const val FLUORESCENT_VALUE: String = "3400K"
+
     const val EYE_CARE_VALUE: String = "0K"
     const val MOON_LIGHT_VALUE: String = "900K"
     const val SUN_RISE_LIGHT_VALUE: String = "2700K"

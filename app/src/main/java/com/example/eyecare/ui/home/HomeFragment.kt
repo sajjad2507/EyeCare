@@ -1,14 +1,19 @@
 package com.example.eyecare.ui.home
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -20,8 +25,10 @@ import androidx.work.workDataOf
 import com.example.eyecare.R
 import com.example.eyecare.databinding.DialogTimePickerBinding
 import com.example.eyecare.databinding.FragmentHomeBinding
+import com.example.eyecare.ui.utils.Utils
 import com.example.eyecare.ui.utils.Utils.launchWhenStarted
 import com.example.eyecare.ui.utils.Utils.setSingleClickListener
+import com.example.eyecare.ui.utils.Utils.showToast
 import com.example.eyecare.ui.utils.constants.Constants
 import com.example.eyecare.ui.utils.preferences.EasyPrefs
 import com.example.eyecare.ui.utils.services.OverlayService
@@ -35,6 +42,25 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeFragmentViewModel by viewModels()
+    private val postNotificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            if(!EasyPrefs.isPauseEnable()){
+                viewModel.startTimer(60000)
+                viewModel.setUpPause(false)
+                startTimeCheckService(requireContext())
+            } else{
+                viewModel.stopTimer()
+                TimeCheckService.stop(requireContext())
+                EasyPrefs.setPauseEnable(false)
+                viewModel.setUpPause(true)
+                binding.pauseText.text = requireContext().getString(R.string._60s_pause)
+            }
+        } else {
+            requireContext().showToast("Notification Permission Required")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,6 +91,9 @@ class HomeFragment : Fragment() {
             menu.setSingleClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
             }
+            if(EasyPrefs.getSeconds() == 60){
+                pauseText.text = requireContext().getString(R.string._60s_pause)
+            }
         }
     }
 
@@ -91,8 +120,8 @@ class HomeFragment : Fragment() {
         }
         launchWhenStarted {
             viewModel.isFilterEnable.collectLatest {
-                binding.switchOverlay.isChecked = it
                 Log.d("Filter",it.toString())
+                binding.switchOverlay.isChecked = it
                 EasyPrefs.setFilterEnabled(it)
                 if(it){
                     OverlayService.start(requireContext())
@@ -104,6 +133,18 @@ class HomeFragment : Fragment() {
         launchWhenStarted {
             viewModel.tempValueFlow.collectLatest {
                 setupTemperatureLayout(it)
+            }
+        }
+        launchWhenStarted {
+            viewModel.timeRemaining.observe(viewLifecycleOwner) { secondsRemaining ->
+                if (secondsRemaining > 0) {
+                    binding.pauseText.text = "00 : ${secondsRemaining}"
+                    OverlayService.stop(requireContext())
+                } else {
+                    binding.pauseText.text = requireContext().getString(R.string._60s_pause)
+                    binding.switchOverlay.isChecked = true
+                    OverlayService.start(requireContext())
+                }
             }
         }
     }
@@ -194,6 +235,7 @@ class HomeFragment : Fragment() {
             })
         }
     }
+
     private fun filterSwitchSetup() {
         binding.switchOverlay.setOnCheckedChangeListener{ _,isChecked->
             binding.switchOverlay.isChecked = isChecked
@@ -210,18 +252,43 @@ class HomeFragment : Fragment() {
 
     private fun setUpPause() {
         binding.pause.setSingleClickListener {
-            Log.d("TimeCheckService","TimeCheckServie")
-            if(!EasyPrefs.isPauseEnable()){
-                viewModel.setUpPause(false)
-                startTimeCheckService(requireContext())
-            } else{
-                TimeCheckService.stop(requireContext())
-                EasyPrefs.setPauseEnable(false)
-                viewModel.setUpPause(true)
-                binding.pauseText.text = requireContext().getString(R.string._60s_pause)
+            if(Utils.checkAndroidVersion()){
+                if(!EasyPrefs.isPauseEnable()){
+                    viewModel.setUpPause(false)
+                    startTimeCheckService(requireContext())
+                    viewModel.startTimer(60000)
+                } else{
+                    TimeCheckService.stop(requireContext())
+                    viewModel.stopTimer()
+                    EasyPrefs.setPauseEnable(false)
+                    viewModel.setUpPause(true)
+                    binding.pauseText.text = requireContext().getString(R.string._60s_pause)
+                }
+            }
+            else {
+                if(ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED){
+                    Log.d("TimeCheckService","TimeCheckServie")
+                    if(!EasyPrefs.isPauseEnable()){
+                        viewModel.startTimer(60000)
+                        viewModel.setUpPause(false)
+                        startTimeCheckService(requireContext())
+                    } else{
+                        TimeCheckService.stop(requireContext())
+                        viewModel.stopTimer()
+                        EasyPrefs.setPauseEnable(false)
+                        viewModel.setUpPause(true)
+                        binding.pauseText.text = requireContext().getString(R.string._60s_pause)
+                    }
+                } else{
+                    postNotificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
             }
         }
     }
+
     private fun startTimeCheckService(context: Context) {
         val serviceIntent = Intent(context, TimeCheckService::class.java)
          ContextCompat.startForegroundService(context, serviceIntent)
@@ -345,6 +412,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        Log.d("OnResume","OnResume")
         viewModel.setUpFilter()
         viewModel.setUpTemperature()
     }

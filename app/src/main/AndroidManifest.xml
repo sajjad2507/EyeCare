@@ -52,6 +52,7 @@
         <service
             android:name=".ui.utils.services.TimeCheckService"
             android:exported="false"
+            android:foregroundServiceType="specialUse"
             />
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"

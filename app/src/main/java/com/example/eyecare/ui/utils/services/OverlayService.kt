@@ -13,12 +13,14 @@ import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
 import androidx.lifecycle.Observer
 import com.example.eyecare.ui.utils.Utils.hasOverlayPermission
-import com.example.eyecare.ui.utils.constants.Constants.BULB_VALUE
-import com.example.eyecare.ui.utils.constants.Constants.CANDLE_VALUE
-import com.example.eyecare.ui.utils.constants.Constants.DOWN_VALUE
+import com.example.eyecare.ui.utils.constants.Constants.CANDLE_LIGHT_VALUE
 import com.example.eyecare.ui.utils.constants.Constants.EYE_CARE_VALUE
-import com.example.eyecare.ui.utils.constants.Constants.FLUORESCENT_VALUE
-import com.example.eyecare.ui.utils.constants.Constants.NIGHT_LIGHT_VALUE
+import com.example.eyecare.ui.utils.constants.Constants.MOON_LIGHT_VALUE
+import com.example.eyecare.ui.utils.constants.Constants.NORMAL_FIRE_VALUE
+import com.example.eyecare.ui.utils.constants.Constants.NORMAL_LIGHT_VALUE
+import com.example.eyecare.ui.utils.constants.Constants.SUN_DOWN_LIGHT_VALUE
+import com.example.eyecare.ui.utils.constants.Constants.SUN_RISE_LIGHT_VALUE
+import com.example.eyecare.ui.utils.constants.Constants.TREES_LIGHT_VALUE
 import com.example.eyecare.ui.utils.preferences.EasyPrefs
 import kotlin.concurrent.Volatile
 
@@ -127,12 +129,14 @@ class OverlayService : AccessibilityService() {
         if (overlayView.isAttachedToWindow.not()) return
         val alpha = (intensity / 100f) * 255
         val color = when (temp) {
-            NIGHT_LIGHT_VALUE -> Color.argb(alpha.toInt(), 176, 196, 222)
+            MOON_LIGHT_VALUE -> Color.argb(alpha.toInt(), 176, 196, 222)
             EYE_CARE_VALUE-> Color.argb(alpha.toInt(), 61, 79, 102)
-            CANDLE_VALUE -> Color.argb(alpha.toInt(), 255, 147, 0)
-            DOWN_VALUE -> Color.argb(alpha.toInt(), 255, 223, 0)
-            BULB_VALUE -> Color.argb(alpha.toInt(), 255, 197, 143)
-            FLUORESCENT_VALUE -> Color.argb(alpha.toInt(), 0, 50, 176)
+            SUN_RISE_LIGHT_VALUE -> Color.argb(alpha.toInt(), 255, 147, 0)
+            SUN_DOWN_LIGHT_VALUE -> Color.argb(alpha.toInt(), 255, 223, 0)
+            CANDLE_LIGHT_VALUE-> Color.argb(alpha.toInt(), 255, 197, 143)
+            TREES_LIGHT_VALUE -> Color.argb(alpha.toInt(), 0, 50, 176)
+            NORMAL_LIGHT_VALUE-> Color.argb(alpha.toInt(), 0, 50, 176)
+            NORMAL_FIRE_VALUE-> Color.argb(alpha.toInt(), 0, 50, 176)
             else -> Color.TRANSPARENT
         }
         overlayView.setFilterColor(color)

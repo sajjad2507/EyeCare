@@ -1,24 +1,30 @@
 package com.example.eyecare.ui.filterdashboard
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentFilterDashboardBinding
 import com.example.eyecare.databinding.ItemTempLayoutBinding
+import com.example.eyecare.ui.utils.Utils
 import com.example.eyecare.ui.utils.Utils.launchWhenStarted
 import com.example.eyecare.ui.utils.Utils.navigateBack
 import com.example.eyecare.ui.utils.Utils.onBackPressed
 import com.example.eyecare.ui.utils.Utils.setSingleClickListener
+import com.example.eyecare.ui.utils.Utils.showToast
 import com.example.eyecare.ui.utils.constants.Constants
 import com.example.eyecare.ui.utils.preferences.EasyPrefs
 import com.example.eyecare.ui.utils.services.OverlayService
@@ -35,6 +41,25 @@ class FilterDashboardFragment : Fragment() {
         })
     }
     private val itemsList = mutableListOf<Int>()
+    private val postNotificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            if(!EasyPrefs.isPauseEnable()){
+                viewModel.startTimer(60000)
+                viewModel.setUpPause(false)
+                startTimeCheckService(requireContext())
+            } else{
+                viewModel.stopTimer()
+                TimeCheckService.stop(requireContext())
+                EasyPrefs.setPauseEnable(false)
+                viewModel.setUpPause(true)
+                binding.pauseTitle.text = requireContext().getString(R.string._60s_pause)
+            }
+        } else {
+            requireContext().showToast("Notification Permission Required")
+        }
+    }
 
     init {
         itemsList.apply {
@@ -67,7 +92,7 @@ class FilterDashboardFragment : Fragment() {
         setUpPause()
         setupLayoutInitially()
         onBackPressed {
-            navigateBack()
+            findNavController().navigate(R.id.action_filterDashboardFragment_to_homeFragment)
         }
     }
 
@@ -128,6 +153,19 @@ class FilterDashboardFragment : Fragment() {
         launchWhenStarted {
             viewModel.tempValueFlow.collectLatest {
                 setupTemperatureLayout(it)
+            }
+        }
+        launchWhenStarted {
+            viewModel.timeRemaining.observe(viewLifecycleOwner) { secondsRemaining ->
+                if (secondsRemaining > 0) {
+                    binding.pauseSwitch.isChecked = true
+                    binding.pauseTitle.text = "00 : ${secondsRemaining}"
+                    OverlayService.stop(requireContext())
+                } else {
+                    binding.pauseTitle.text = requireContext().getString(R.string._60s_pause)
+                    binding.pauseSwitch.isChecked = false
+                    OverlayService.start(requireContext())
+                }
             }
         }
     }
@@ -236,15 +274,39 @@ class FilterDashboardFragment : Fragment() {
 
     private fun setUpPause() {
         binding.pause.setSingleClickListener {
-            Log.d("TimeCheckService","TimeCheckServie")
-            if(!EasyPrefs.isPauseEnable()){
-                viewModel.setUpPause(false)
-                startTimeCheckService(requireContext())
-            } else{
-                TimeCheckService.stop(requireContext())
-                EasyPrefs.setPauseEnable(false)
-                viewModel.setUpPause(true)
-                binding.pauseTitle.text = requireContext().getString(R.string._60s_pause)
+            if(Utils.checkAndroidVersion()){
+                if(!EasyPrefs.isPauseEnable()){
+                    viewModel.setUpPause(false)
+                    startTimeCheckService(requireContext())
+                    viewModel.startTimer(60000)
+                } else{
+                    TimeCheckService.stop(requireContext())
+                    viewModel.stopTimer()
+                    EasyPrefs.setPauseEnable(false)
+                    viewModel.setUpPause(true)
+                    binding.pauseTitle.text = requireContext().getString(R.string._60s_pause)
+                }
+            }
+            else {
+                if(ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.POST_NOTIFICATIONS
+                    ) == PackageManager.PERMISSION_GRANTED){
+                    Log.d("TimeCheckService","TimeCheckServie")
+                    if(!EasyPrefs.isPauseEnable()){
+                        viewModel.startTimer(60000)
+                        viewModel.setUpPause(false)
+                        startTimeCheckService(requireContext())
+                    } else{
+                        TimeCheckService.stop(requireContext())
+                        viewModel.stopTimer()
+                        EasyPrefs.setPauseEnable(false)
+                        viewModel.setUpPause(true)
+                        binding.pauseTitle.text = requireContext().getString(R.string._60s_pause)
+                    }
+                } else{
+                    postNotificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
             }
         }
     }

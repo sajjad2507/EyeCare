@@ -67,13 +67,13 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                             circularView.setBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
-                                    R.color.blue
+                                    R.color.white
                                 )
                             )
                             icon.setColorFilter(
                                 ContextCompat.getColor(
                                     root.context,
-                                    R.color.white
+                                    R.color.blue
                                 ),
                                 PorterDuff.Mode.SRC_IN
                             )
@@ -83,13 +83,13 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                             circularView.setBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
-                                    R.color.white
+                                    R.color.blue
                                 )
                             )
                             icon.setColorFilter(
                                 ContextCompat.getColor(
                                     root.context,
-                                    R.color.blue
+                                    R.color.white
                                 ),
                                 PorterDuff.Mode.SRC_IN
                             )
@@ -199,13 +199,13 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                             circularView.setBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
-                                    R.color.white
+                                    R.color.blue
                                 )
                             )
                             icon.setColorFilter(
                                 ContextCompat.getColor(
                                     root.context,
-                                    R.color.blue
+                                    R.color.white
                                 ),
                                 PorterDuff.Mode.SRC_IN
                             )
@@ -215,13 +215,13 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                             circularView.setBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
-                                    R.color.blue
+                                    R.color.white
                                 )
                             )
                             icon.setColorFilter(
                                 ContextCompat.getColor(
                                     root.context,
-                                    R.color.white
+                                    R.color.blue
                                 ),
                                 PorterDuff.Mode.SRC_IN
                             )

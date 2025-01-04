@@ -1,18 +1,17 @@
 package com.example.eyecare.ui.splash
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentSplashScreenBinding
-import com.example.eyecare.ui.utils.Utils
+import com.example.eyecare.ui.utils.PermissionHelper.isOverlayServiceEnabled
 import com.example.eyecare.ui.utils.Utils.hasOverlayPermission
 import com.example.eyecare.ui.utils.preferences.EasyPrefs
-import com.example.eyecare.ui.utils.services.OverlayService
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -45,19 +44,13 @@ class SplashScreenFragment : Fragment() {
             if(EasyPrefs.isOnBoardingEnable()){
                 findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
             } else {
-                if(Utils.checkAndroidVersion()){
-                    if(requireContext().hasOverlayPermission()) {
+                if (requireContext().hasOverlayPermission()
+                    && isOverlayServiceEnabled(requireContext())
+                    ) {
                         findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
-                    } else{
+                    } else {
                         findNavController().navigate(R.id.action_splashScreenFragment_to_permissionHandlingFragment)
                     }
-                } else{
-                    if(Utils.isAccessibilityServiceEnabled(requireContext(), OverlayService::class.java)){
-                        findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
-                    } else{
-                        findNavController().navigate(R.id.action_splashScreenFragment_to_permissionHandlingFragment)
-                    }
-                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.eyecare.ui.filterdashboard
 
+import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,8 +23,18 @@ class FilterDashboardViewModel : ViewModel() {
     private val _tempValueFlow = MutableStateFlow<String>(EasyPrefs.colorTemperature())
     val tempValueFlow : StateFlow<String> get() = _tempValueFlow
 
+    private val _timeRemaining = MutableLiveData<Long>()
+    val timeRemaining: LiveData<Long> get() = _timeRemaining
+
+    private var countDownTimer: CountDownTimer? = null
+    private var isTimerRunning = false
+
     init {
         setUpFilter()
+        if(EasyPrefs.getSeconds() < 60){
+            val timeMillis = EasyPrefs.getSeconds() * 1000
+            startTimer(timeMillis.toLong())
+        }
     }
     fun setDimLevel(progress: Int) = vmScopeLaunch {
         Log.d("Dim Change","Dim Change")
@@ -50,5 +61,32 @@ class FilterDashboardViewModel : ViewModel() {
 
     fun setUpTemperature(eyeCareValue: String) = vmScopeLaunch {
         _tempValueFlow.emit(eyeCareValue)
+    }
+
+    fun startTimer(timeInMillis: Long) {
+        if (isTimerRunning) return
+
+        countDownTimer = object : CountDownTimer(timeInMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                _timeRemaining.value = millisUntilFinished / 1000
+            }
+
+            override fun onFinish() {
+                _timeRemaining.value = 0
+                isTimerRunning = false
+            }
+        }.start()
+
+        isTimerRunning = true
+    }
+
+    fun stopTimer() {
+        countDownTimer?.cancel()
+        isTimerRunning = false
+        _timeRemaining.value = 0
+    }
+
+    fun isTimerActive(): Boolean {
+        return isTimerRunning
     }
 }

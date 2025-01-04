@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import com.example.eyecare.ui.utils.services.OverlayService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -93,29 +94,33 @@ object Utils {
         return Settings.canDrawOverlays(this)
     }
 
+//    fun isOverlayServiceEnabled(context: Context): Boolean {
+//        return isAccessibilityServiceEnabled(context, OverlayService::class.java)
+//    }
+
     fun ViewModel.vmScopeLaunch(action: suspend CoroutineScope.() -> Unit) {
         viewModelScope.launch(Dispatchers.IO) { action() }
     }
 
-    fun isAccessibilityServiceEnabled(context: Context, service: Class<out AccessibilityService>): Boolean {
-        val am = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
-        val enabledServices = am.getEnabledAccessibilityServiceList(1)
-
-        for (enabledService in enabledServices) {
-            val enabledServiceInfo = enabledService.resolveInfo.serviceInfo
-            if (enabledServiceInfo.packageName == context.packageName && enabledServiceInfo.name == service.name) {
-                return true
-            }
-        }
-
-        return false
-    }
-
-    fun openAccessibility(context: Context) {
-        val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        context.startActivity(intent)
-    }
+//    fun isAccessibilityServiceEnabled(context: Context, service: Class<out AccessibilityService>): Boolean {
+//        val am = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+//        val enabledServices = am.getEnabledAccessibilityServiceList(1)
+//
+//        for (enabledService in enabledServices) {
+//            val enabledServiceInfo = enabledService.resolveInfo.serviceInfo
+//            if (enabledServiceInfo.packageName == context.packageName && enabledServiceInfo.name == service.name) {
+//                return true
+//            }
+//        }
+//
+//        return false
+//    }
+//
+//    fun openAccessibility(context: Context) {
+//        val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//        context.startActivity(intent)
+//    }
 
     fun checkAndroidVersion() : Boolean {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) {
