@@ -47,4 +47,8 @@ class FilterDashboardViewModel : ViewModel() {
     fun setUpPause(checked: Boolean) = vmScopeLaunch {
         _isFilterEnable.emit(checked)
     }
+
+    fun setUpTemperature(eyeCareValue: String) = vmScopeLaunch {
+        _tempValueFlow.emit(eyeCareValue)
+    }
 }

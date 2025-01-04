@@ -127,8 +127,8 @@ class OverlayService : AccessibilityService() {
         if (overlayView.isAttachedToWindow.not()) return
         val alpha = (intensity / 100f) * 255
         val color = when (temp) {
-            EYE_CARE_VALUE -> Color.argb(alpha.toInt(), 125, 0, 0)
-            NIGHT_LIGHT_VALUE -> Color.argb(alpha.toInt(), 61, 79, 102)
+            NIGHT_LIGHT_VALUE -> Color.argb(alpha.toInt(), 176, 196, 222)
+            EYE_CARE_VALUE-> Color.argb(alpha.toInt(), 61, 79, 102)
             CANDLE_VALUE -> Color.argb(alpha.toInt(), 255, 147, 0)
             DOWN_VALUE -> Color.argb(alpha.toInt(), 255, 223, 0)
             BULB_VALUE -> Color.argb(alpha.toInt(), 255, 197, 143)

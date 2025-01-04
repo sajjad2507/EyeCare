@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_splashScreenFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_permissionHandlingFragment"
+            app:destination="@id/permissionHandlingFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
@@ -22,6 +28,9 @@
         <action
             android:id="@+id/action_onBoardingFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_onBoardingFragment_to_permissionHandlingFragment"
+            app:destination="@id/permissionHandlingFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -62,5 +71,14 @@
         <action
             android:id="@+id/action_reminderListFragment_to_addReminderFragment"
             app:destination="@id/addReminderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionHandlingFragment"
+        android:name="com.example.eyecare.ui.permission.PermissionHandlingFragment"
+        android:label="fragment_permission_handling"
+        tools:layout="@layout/fragment_permission_handling" >
+        <action
+            android:id="@+id/action_permissionHandlingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

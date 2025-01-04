@@ -346,5 +346,6 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.setUpFilter()
+        viewModel.setUpTemperature()
     }
 }

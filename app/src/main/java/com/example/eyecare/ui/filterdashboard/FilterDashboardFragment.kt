@@ -127,35 +127,50 @@ class FilterDashboardFragment : Fragment() {
         }
         launchWhenStarted {
             viewModel.tempValueFlow.collectLatest {
-//                setupTemperatureLayout(it)
+                setupTemperatureLayout(it)
             }
         }
     }
+
+    private fun setupTemperatureLayout(temperature: String) {
+        binding.apply {
+            temperaturePercentage.text = temperature
+        }
+    }
+
     private fun onItemClicked(position: Int, itemBinding: ItemTempLayoutBinding) {
         when (position) {
             0 -> {
-                EasyPrefs.setColorTemperature(Constants.EYE_CARE_VALUE)
+                EasyPrefs.setColorTemperature(Constants.MOON_LIGHT_VALUE)
+                viewModel.setUpTemperature(Constants.MOON_LIGHT_VALUE)
             }
             1 -> {
-                EasyPrefs.setColorTemperature(Constants.MOON_LIGHT_VALUE)
+                EasyPrefs.setColorTemperature(Constants.EYE_CARE_VALUE)
+                viewModel.setUpTemperature(Constants.EYE_CARE_VALUE)
             }
             2 -> {
                 EasyPrefs.setColorTemperature(Constants.SUN_RISE_LIGHT_VALUE)
+                viewModel.setUpTemperature(Constants.SUN_RISE_LIGHT_VALUE)
             }
             3 -> {
                 EasyPrefs.setColorTemperature(Constants.SUN_DOWN_LIGHT_VALUE)
+                viewModel.setUpTemperature(Constants.SUN_DOWN_LIGHT_VALUE)
             }
             4 -> {
                 EasyPrefs.setColorTemperature(Constants.CANDLE_LIGHT_VALUE)
+                viewModel.setUpTemperature(Constants.CANDLE_LIGHT_VALUE)
             }
             5 -> {
                 EasyPrefs.setColorTemperature(Constants.TREES_LIGHT_VALUE)
+                viewModel.setUpTemperature(Constants.TREES_LIGHT_VALUE)
             }
             6 -> {
                 EasyPrefs.setColorTemperature(Constants.NORMAL_LIGHT_VALUE)
+                viewModel.setUpTemperature(Constants.NORMAL_LIGHT_VALUE)
             }
             7 -> {
                 EasyPrefs.setColorTemperature(Constants.NORMAL_FIRE_VALUE)
+                viewModel.setUpTemperature(Constants.NORMAL_FIRE_VALUE)
             }
         }
         adapter.prefObservers(itemBinding,position)

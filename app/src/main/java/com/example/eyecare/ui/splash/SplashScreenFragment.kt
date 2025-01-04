@@ -9,6 +9,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentSplashScreenBinding
+import com.example.eyecare.ui.utils.Utils
+import com.example.eyecare.ui.utils.Utils.hasOverlayPermission
+import com.example.eyecare.ui.utils.preferences.EasyPrefs
+import com.example.eyecare.ui.utils.services.OverlayService
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -22,13 +26,11 @@ class SplashScreenFragment : Fragment() {
         binding = FragmentSplashScreenBinding.inflate(layoutInflater)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         animationHandling()
         navigateAfterDelay()
     }
-
     private fun animationHandling() {
         binding.apply {
             loadingAnimation.playAnimation()
@@ -40,7 +42,23 @@ class SplashScreenFragment : Fragment() {
     private fun navigateAfterDelay() {
         viewLifecycleOwner.lifecycleScope.launch {
             delay(5000)
-            findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+            if(EasyPrefs.isOnBoardingEnable()){
+                findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+            } else {
+                if(Utils.checkAndroidVersion()){
+                    if(requireContext().hasOverlayPermission()) {
+                        findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
+                    } else{
+                        findNavController().navigate(R.id.action_splashScreenFragment_to_permissionHandlingFragment)
+                    }
+                } else{
+                    if(Utils.isAccessibilityServiceEnabled(requireContext(), OverlayService::class.java)){
+                        findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
+                    } else{
+                        findNavController().navigate(R.id.action_splashScreenFragment_to_permissionHandlingFragment)
+                    }
+                }
+            }
         }
     }
 

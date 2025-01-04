@@ -28,6 +28,7 @@ object EasyPrefs {
     private const val KEY_PAUSE_ENABLE = "KEY_PAUSE_ENABLE"
     private const val KEY_SETTING_ENABLE = "KEY_SETTING_ENABLE"
     private const val KEY_SECONDS_COUNT = "KEY_SECONDS_COUNT"
+    private const val KEY_ONBOARDING_ENABLED = "KEY_ONBOARDING_ENABLED"
 
 
     fun init(context: Context) {
@@ -181,5 +182,13 @@ object EasyPrefs {
     }
     fun isSettingEnable(): Boolean {
         return Prefs.getBoolean(KEY_SETTING_ENABLE, false)
+    }
+
+    fun setOnBoardingEnable(enabled: Boolean) {
+        Prefs.putBoolean(KEY_ONBOARDING_ENABLED, enabled)
+    }
+
+    fun isOnBoardingEnable(): Boolean {
+        return Prefs.getBoolean(KEY_ONBOARDING_ENABLED, true)
     }
 }
