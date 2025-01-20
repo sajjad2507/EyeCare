@@ -50,4 +50,5 @@
     <string name="permission_is_needed_to_apply_a_blue_light_filter_for_reduced_eye_strain_and_better_comfort_especially_in_low_light_conditions">Overlay and Accessibility Service permissions are needed to apply a blue light filter for reduced eye strain and better comfort, especially in low-light conditions.</string>
     <string name="skip_for_now">Skip For Now</string>
     <string name="allow">Allow</string>
+    <string name="light">Light</string>
 </resources>

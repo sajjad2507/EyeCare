@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_ad_bg">
+
+    <TextView
+        android:id="@+id/native_media_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:text="@string/ad_is_loading"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:id="@+id/native_media_ad_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:elevation="@dimen/_8sdp"
+        android:minHeight="@dimen/_200sdp" />
+
+
+</RelativeLayout>

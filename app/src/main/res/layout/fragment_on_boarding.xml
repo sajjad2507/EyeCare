@@ -1,69 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.onboarding.OnBoardingFragment"
-    android:background="@color/light_black">
+    android:background="@color/light_black"
+    tools:context=".ui.onboarding.OnBoardingFragment">
+
+    <include
+        android:id="@+id/banner_top"
+        layout="@layout/admob_banner_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title_text"
+        style="@style/text_view_32ssp_bold_txt_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/blue_light_sleep"
-        style="@style/text_view_32ssp_bold_baloo_bhaina_2"
         android:layout_marginTop="@dimen/__40sdp"
-        />
+        android:text="@string/blue_light_sleep"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/banner_top" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text"
-        android:text="@string/studies_shows_that_screen_blue_light_before_bed_can_disrupt_sleep_making_it_harder_to_fall_asleep"
-        android:textSize="@dimen/__16ssp"
-        android:textColor="@color/light_white_text"
-        android:layout_marginTop="0dp"
-        android:textAlignment="center"
-        android:layout_marginHorizontal="@dimen/__40sdp"
-        android:lineSpacingExtra="0dp"
+        android:layout_marginHorizontal="@dimen/__20sdp"
         android:lineSpacingMultiplier="1.0"
-        />
+        android:text="@string/studies_shows_that_screen_blue_light_before_bed_can_disrupt_sleep_making_it_harder_to_fall_asleep"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/__16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subtitle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_onboarding_1"
         android:layout_marginHorizontal="@dimen/__20sdp"
-        android:layout_marginTop="@dimen/__50sdp"
-        android:layout_marginBottom="@dimen/_200sdp"
-        />
+        android:src="@drawable/ic_onboarding_1"
+        app:layout_constraintBottom_toTopOf="@id/next_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/indicator_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_indicator_1"
-        android:layout_marginBottom="@dimen/__35sdp"
         android:layout_marginStart="@dimen/__32sdp"
-        />
+        android:layout_marginBottom="@dimen/__35sdp"
+        android:src="@drawable/ic_indicator_1"
+        app:layout_constraintBottom_toTopOf="@id/native_ad"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_next"
-        android:layout_marginBottom="@dimen/__20sdp"
         android:layout_marginEnd="@dimen/__32sdp"
-        />
+        android:layout_marginBottom="@dimen/__20sdp"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toTopOf="@id/native_ad"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include
+        android:id="@+id/native_ad"
+        layout="@layout/admob_native_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:visibility="gone"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/banner_bottom" />
+
+    <include
+        android:id="@+id/banner_bottom"
+        layout="@layout/admob_banner_bottom"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
