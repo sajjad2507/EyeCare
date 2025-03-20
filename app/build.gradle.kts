@@ -67,4 +67,9 @@ dependencies {
     // Kotlin extensions and Coroutines support for Room
     implementation(libs.androidx.room.ktx)
 
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // Language Flags
+    implementation("com.hbb20:ccp:2.5.0")
 }

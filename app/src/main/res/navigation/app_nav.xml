@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_splashScreenFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
@@ -61,6 +64,15 @@
         <action
             android:id="@+id/action_settingFragment_to_reminderListFragment"
             app:destination="@id/reminderListFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_languageFragment2"
+            app:destination="@id/languageFragment" />
     </fragment>
     <fragment
         android:id="@+id/addReminderFragment"
@@ -84,5 +96,23 @@
         <action
             android:id="@+id/action_permissionHandlingFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.example.eyecare.ui.language.LanguageFragment"
+        android:label="fragment_language"
+        tools:layout="@layout/fragment_language" >
+        <action
+            android:id="@+id/action_languageFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_languageFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_languageFragment_to_settingFragment2"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_languageFragment_to_settingFragment3"
+            app:destination="@id/settingFragment" />
     </fragment>
 </navigation>

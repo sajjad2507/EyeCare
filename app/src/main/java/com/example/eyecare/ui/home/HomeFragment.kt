@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -42,6 +43,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeFragmentViewModel by viewModels()
+    private var backPressedTime: Long = 0
+    private val doubleBackToExitPressedMessage = "Press back again to exit"
     private val postNotificationPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { granted ->
@@ -79,6 +82,24 @@ class HomeFragment : Fragment() {
         setUpPause()
         setupLayoutInitially()
         setUpAutoTimer()
+
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                        requireActivity().finish()
+                        return
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            doubleBackToExitPressedMessage,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    backPressedTime = System.currentTimeMillis()
+                }
+            })
     }
 
     private fun setupLayoutInitially() {
@@ -251,7 +272,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpPause() {
-        binding.pause.setSingleClickListener {
+        binding.pauseTimerLayout.setSingleClickListener {
             if(Utils.checkAndroidVersion()){
                 if(!EasyPrefs.isPauseEnable()){
                     viewModel.setUpPause(false)

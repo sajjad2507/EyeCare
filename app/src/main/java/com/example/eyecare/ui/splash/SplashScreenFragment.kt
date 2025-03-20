@@ -16,7 +16,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashScreenFragment : Fragment() {
-    private lateinit var binding : FragmentSplashScreenBinding
+    private lateinit var binding: FragmentSplashScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,32 +25,35 @@ class SplashScreenFragment : Fragment() {
         binding = FragmentSplashScreenBinding.inflate(layoutInflater)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         animationHandling()
         navigateAfterDelay()
     }
+
     private fun animationHandling() {
         binding.apply {
             loadingAnimation.playAnimation()
             loadingAnimation.postDelayed({
                 loadingAnimation.cancelAnimation()
-            },5000)
+            }, 5000)
         }
     }
+
     private fun navigateAfterDelay() {
         viewLifecycleOwner.lifecycleScope.launch {
             delay(5000)
-            if(EasyPrefs.isOnBoardingEnable()){
-                findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+            if (EasyPrefs.isOnBoardingEnable()) {
+                findNavController().navigate(R.id.action_splashScreenFragment_to_languageFragment)
             } else {
                 if (requireContext().hasOverlayPermission()
                     && isOverlayServiceEnabled(requireContext())
-                    ) {
-                        findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
-                    } else {
-                        findNavController().navigate(R.id.action_splashScreenFragment_to_permissionHandlingFragment)
-                    }
+                ) {
+                    findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
+                } else {
+                    findNavController().navigate(R.id.action_splashScreenFragment_to_permissionHandlingFragment)
+                }
             }
         }
     }

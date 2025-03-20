@@ -17,7 +17,7 @@
     <string name="candle_light">Candle Light</string>
     <string name="click_here_to_change_the_color_filter">Click here to change the color filter.</string>
     <string name="how_it_works">How it works?</string>
-    <string name="ad_is_loading">Ad is loading</string>
+    <string name="ad_is_loading">Ad is loading...</string>
     <string name="_60s_pause">60s Pause</string>
     <string name="auto_timer">Auto Timer</string>
     <string name="intensity">Intensity</string>
@@ -51,4 +51,10 @@
     <string name="skip_for_now">Skip For Now</string>
     <string name="allow">Allow</string>
     <string name="light">Light</string>
+    <string name="go">Go</string>
+    <string name="write_important_task_here">Write important task here..</string>
+    <string name="loading_ads">Loading Ads</string>
+    <string name="description_image">description image</string>
+    <string name="select_language">Select Language</string>
+    <string name="english">English</string>
 </resources>

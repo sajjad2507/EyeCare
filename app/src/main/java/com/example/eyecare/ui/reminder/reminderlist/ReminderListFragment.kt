@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.eyecare.R
 import com.example.eyecare.databinding.FragmentReminderListBinding
 import com.example.eyecare.ui.utils.Utils.launchWhenStarted
@@ -52,7 +53,8 @@ class ReminderListFragment : Fragment() {
             addReminderBtn.setSingleClickListener {
                 findNavController().navigate(R.id.action_reminderListFragment_to_addReminderFragment)
             }
-            remindersRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+            remindersRecyclerView.layoutManager =
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             remindersRecyclerView.adapter = adapter
             allTypes.setSingleClickListener {
                 launchWhenStarted {
@@ -76,18 +78,19 @@ class ReminderListFragment : Fragment() {
             }
         }
     }
-    private fun allObservers(){
+
+    private fun allObservers() {
         launchWhenStarted {
-            reminderViewModel.allReminders.observe(viewLifecycleOwner){
-                Log.d("Reminders",it.toString())
+            reminderViewModel.allReminders.observe(viewLifecycleOwner) {
+                Log.d("Reminders", it.toString())
                 adapter.submitList(it)
             }
         }
         launchWhenStarted {
             viewModel.selectedTypePosition.collectLatest {
-                when(it){
-                    0-> {
-                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
+                when (it) {
+                    0 -> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner) { reminders ->
                             adapter.submitList(reminders)
                         }
                         binding.apply {
@@ -97,9 +100,10 @@ class ReminderListFragment : Fragment() {
                             studyTypes.setTextColorRes(R.color.white)
                         }
                     }
-                    1-> {
-                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
-                            val filteredReminders = reminders.filter { type->
+
+                    1 -> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner) { reminders ->
+                            val filteredReminders = reminders.filter { type ->
                                 type.reminderType == "Personal"
                             }
                             adapter.submitList(filteredReminders)
@@ -111,9 +115,10 @@ class ReminderListFragment : Fragment() {
                             studyTypes.setTextColorRes(R.color.white)
                         }
                     }
-                    2-> {
-                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
-                            val filteredReminders = reminders.filter { type->
+
+                    2 -> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner) { reminders ->
+                            val filteredReminders = reminders.filter { type ->
                                 type.reminderType == "Work"
                             }
                             adapter.submitList(filteredReminders)
@@ -125,9 +130,10 @@ class ReminderListFragment : Fragment() {
                             studyTypes.setTextColorRes(R.color.white)
                         }
                     }
-                    3-> {
-                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
-                            val filteredReminders = reminders.filter { type->
+
+                    3 -> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner) { reminders ->
+                            val filteredReminders = reminders.filter { type ->
                                 type.reminderType == "Study"
                             }
                             adapter.submitList(filteredReminders)
@@ -139,8 +145,9 @@ class ReminderListFragment : Fragment() {
                             studyTypes.setTextColorRes(R.color.blue)
                         }
                     }
-                    else->{
-                        reminderViewModel.allReminders.observe(viewLifecycleOwner){ reminders->
+
+                    else -> {
+                        reminderViewModel.allReminders.observe(viewLifecycleOwner) { reminders ->
                             adapter.submitList(reminders)
                         }
                         binding.apply {

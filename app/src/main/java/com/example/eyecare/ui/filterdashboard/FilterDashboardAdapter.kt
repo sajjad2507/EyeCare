@@ -64,7 +64,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                 Constants.EYE_CARE_VALUE -> {
                     when (position) {
                         0 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -80,7 +80,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         1 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.blue
@@ -96,7 +96,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         2 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -112,7 +112,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         3 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -128,7 +128,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         4 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -144,7 +144,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         5 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -160,7 +160,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         6 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -176,7 +176,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         7 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -196,7 +196,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                 Constants.MOON_LIGHT_VALUE -> {
                     when (position) {
                         0 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.blue
@@ -212,7 +212,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         1 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -228,7 +228,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         2 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -244,7 +244,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         3 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -260,7 +260,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         4 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -276,7 +276,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         5 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -292,7 +292,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         6 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -308,7 +308,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         7 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -328,7 +328,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                 Constants.SUN_RISE_LIGHT_VALUE -> {
                     when (position) {
                         0 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -344,7 +344,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         1 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -360,7 +360,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         2 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.blue
@@ -376,7 +376,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         3 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -392,7 +392,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         4 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -408,7 +408,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         5 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -424,7 +424,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         6 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -440,7 +440,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         7 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -460,7 +460,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                 Constants.SUN_DOWN_LIGHT_VALUE -> {
                     when (position) {
                         0 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -476,7 +476,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         1 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -492,7 +492,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         2 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -508,7 +508,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         3 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.blue
@@ -524,7 +524,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         4 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -540,7 +540,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         5 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -556,7 +556,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         6 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -572,7 +572,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         7 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -592,7 +592,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                 Constants.CANDLE_LIGHT_VALUE -> {
                     when (position) {
                         0 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -608,7 +608,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         1 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -624,7 +624,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         2 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -640,7 +640,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         3 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -656,7 +656,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         4 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.blue
@@ -672,7 +672,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         5 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -688,7 +688,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         6 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -704,7 +704,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         7 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -724,7 +724,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                 Constants.TREES_LIGHT_VALUE -> {
                     when (position) {
                         0 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -740,7 +740,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         1 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -756,7 +756,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         2 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -772,7 +772,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         3 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -788,7 +788,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         4 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -804,7 +804,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         5 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.blue
@@ -820,7 +820,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         6 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -836,7 +836,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         7 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -856,7 +856,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                 Constants.NORMAL_LIGHT_VALUE -> {
                     when (position) {
                         0 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -872,7 +872,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         1 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -888,7 +888,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         2 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -904,7 +904,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         3 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -920,7 +920,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         4 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -936,7 +936,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         5 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -952,7 +952,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         6 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.blue
@@ -968,7 +968,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         7 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -988,7 +988,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                 Constants.NORMAL_FIRE_VALUE -> {
                     when (position) {
                         0 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -1004,7 +1004,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         1 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -1020,7 +1020,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         2 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -1036,7 +1036,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         3 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -1052,7 +1052,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         4 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -1068,7 +1068,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         5 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -1084,7 +1084,7 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         6 -> {
-                            circularView.setBackgroundColor(
+                            circularView.setCardBackgroundColor(
                                 ContextCompat.getColor(
                                     root.context,
                                     R.color.white
@@ -1100,12 +1100,10 @@ class FilterDashboardAdapter(private val onItemClick: (Int,ItemTempLayoutBinding
                         }
 
                         7 -> {
-                            circularView.setBackgroundColor(
-                                ContextCompat.getColor(
-                                    root.context,
-                                    R.color.blue
-                                )
-                            )
+                            circularView.setCardBackgroundColor(ContextCompat.getColor(
+                                root.context,
+                                R.color.blue
+                            ))
                             icon.setColorFilter(
                                 ContextCompat.getColor(
                                     root.context,

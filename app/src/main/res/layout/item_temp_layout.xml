@@ -3,25 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/__5sdp"
-    >
-    <com.google.android.material.imageview.ShapeableImageView
+    android:layout_margin="@dimen/__5sdp">
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/circular_view"
         android:layout_width="@dimen/__40sdp"
         android:layout_height="@dimen/__40sdp"
-        android:background="@color/white"
+        android:background="@color/gray"
         android:scaleType="centerCrop"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="@dimen/_32sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
         app:strokeColor="@color/white"
-        app:strokeWidth="@dimen/__1sdp"
-        />
+        app:strokeWidth="@dimen/__1sdp" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
-        android:layout_width="@dimen/__16sdp"
-        android:layout_height="@dimen/__16sdp"
+        android:layout_width="@dimen/__20sdp"
+        android:layout_height="@dimen/__20sdp"
+        android:elevation="@dimen/_2sdp"
         android:src="@drawable/ic_candle"
+        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/circular_view"
         app:layout_constraintEnd_toEndOf="@id/circular_view"
         app:layout_constraintStart_toStartOf="@id/circular_view"
